@@ -7,14 +7,32 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm.js';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      input: '',
+    }
+  }
+
+  onInputChange = (event) => {
+    console.log(event.target.value);
+  }
+
+  onButtonSubmit = () =>{
+    console.log('click');
+  }
+
   render() {
     return (
       <div className="App">
-        <ParticlesBg className="particles" color="#FFFFFF" num={350} type="cobweb" bg={true} />
+        <ParticlesBg className="particles" color="#FFFFFF" num={400} type="cobweb" bg={true} />
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm 
+          onInputChange={this.onInputChange} 
+          onButtonSubmit={this.onButtonSubmit}
+        />
         
         {/* <FaceRecognition /> */}
       </div>
@@ -23,16 +41,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-Code to implement ParticlesBg:
-<Particlesbg type='circle' bg={true} />
-
-Code to implement Tilt:
-import Tilt from 'react-parallax-tilt';
-------------------------------------
-<tilt>
-....
-</tilt>
-*/
-
